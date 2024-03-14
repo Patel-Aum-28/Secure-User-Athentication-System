@@ -1,5 +1,7 @@
 # Secure User Authentication System
 
+[![License](https://img.shields.io/github/license/Patel-Aum-28/Secure-User-Athentication-System)](https://github.com/Patel-Aum-28/Secure-User-Athentication-System/blob/main/LICENSE)
+
 > [!NOTE]
 > Please configure project first. See Configuration section for more details.
 
