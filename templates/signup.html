@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SignUp Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+        body {
+            height: 100vh;
+            background-image: linear-gradient( 89.9deg,  rgba(178,253,238,0.96) -8.1%, rgba(207,244,254,1) 26.3%, rgba(207,244,254,0.48) 47.5%, rgba(254,219,243,0.63) 61.5%, rgba(254,219,243,1) 78.7%, rgba(254,207,210,1) 109.2% );
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-control {
+        	height: 40px;
+        	box-shadow: none;
+        	color: #969fa4;
+        }
+        .form-control:focus {
+        	border-color: #5cb85c;
+        }
+        .form-control, .btn {        
+        	border-radius: 3px;
+        }
+        .signup-form {
+        	width: 450px;
+        	margin: 0 auto;
+        	padding: 30px 0;
+          	font-size: 15px;
+        }
+        .signup-form h2 {
+	        color: #636363;
+	        margin: 0 0 15px;
+	        position: relative;
+	        text-align: center;
+        }
+        .signup-form h2:before, .signup-form h2:after {
+	        content: "";
+	        height: 2px;
+	        width: 30%;
+	        background: #d4d4d4;
+	        position: absolute;
+        	top: 50%;
+	        z-index: 2;
+        }	
+        .signup-form h2:before {
+	        left: 0;
+        }
+        .signup-form h2:after {
+        	right: 0;
+        }
+        .signup-form .hint-text {
+	        color: #999;
+        	margin-bottom: 30px;
+        	text-align: center;
+        }
+        .signup-form form {
+        	color: #999;
+        	border-radius: 15px;
+        	margin-bottom: 15px;
+        	background: #f2f3f7;
+        	box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.3);
+        	padding: 30px;
+        }
+        .signup-form .form-group {
+        	margin-bottom: 20px;
+        }
+        .signup-form .btn {        
+        	font-size: 16px;
+        	font-weight: bold;		
+        	min-width: 140px;
+        	outline: none !important;
+        }
+        .signup-form .row div:first-child {
+        	padding-right: 10px;
+        }
+        .signup-form .row div:last-child {
+        	padding-left: 10px;
+        }    	
+        .signup-form a {
+        	color: #000;
+        	text-decoration: underline;
+        }
+        .signup-form a:hover {
+        	text-decoration: none;
+        }
+        .signup-form form a {
+        	color: #5cb85c;
+        	text-decoration: none;
+        }	
+        .signup-form form a:hover {
+	        text-decoration: underline;
+        }  
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const usernameInput = document.getElementById('username');
+                const emailInput = document.getElementById('email');
+                const passwordInput = document.getElementById('password');
+                const confirmPasswordInput = document.getElementById('confirm_password');
+                const usernameMessage = document.getElementById('username-message');
+                const emailMessage = document.getElementById('email-message');
+                const passwordMessage = document.getElementById('password-message');
+                const confirmPasswordMessage = document.getElementById('confirm-password-message');
+
+                function validateUsername() {
+                    const username = usernameInput.value;
+                    let usernameErrorMessage = '';
+    
+                    if (username.length < 8 || username.length > 15 || !username.match(/^\w+$/)) {
+                        usernameErrorMessage = '* Username must be alphanumeric and between 8 and 15 characters long.';
+                    }
+    
+                    usernameMessage.innerHTML = usernameErrorMessage;
+    
+                    if (usernameErrorMessage !== '') {
+                        usernameMessage.style.color = 'red';
+                    } else {
+                        usernameMessage.style.color = '';
+                    }
+                }
+    
+                function validateEmail() {
+                    const email = emailInput.value;
+                    let emailErrorMessage = '';
+    
+                    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                        emailErrorMessage = '* Please enter a valid email address.';
+                    }
+    
+                    emailMessage.innerHTML = emailErrorMessage;
+    
+                    if (emailErrorMessage !== '') {
+                        emailMessage.style.color = 'red';
+                    } else {
+                        emailMessage.style.color = '';
+                    }
+                }
+            
+                function validatePassword() {
+                    const password = passwordInput.value;
+                    const confirmPassword = confirmPasswordInput.value;
+                    let passwordErrorMessage = '';
+                    let confirmPasswordErrorMessage = '';
+            
+                    if (password.length < 8) {
+                        passwordErrorMessage += '* Password must be at least 8 characters long.<br>';
+                    }
+            
+                    if (!/[A-Z]/.test(password)) {
+                        passwordErrorMessage += '* Password must contain at least one uppercase letter.<br>';
+                    }
+            
+                    if (!/[a-z]/.test(password)) {
+                        passwordErrorMessage += '* Password must contain at least one lowercase letter.<br>';
+                    }
+            
+                    if (!/\d/.test(password)) {
+                        passwordErrorMessage += '* Password must contain at least one digit.<br>';
+                    }
+            
+                    if (!/[@$!%*?&]/.test(password)) {
+                        passwordErrorMessage += '* Password must contain at least one special character.<br>';
+                    }
+            
+                    if (password !== confirmPassword) {
+                        confirmPasswordErrorMessage += '* Passwords do not match.<br>';
+                    }
+            
+                    passwordMessage.innerHTML = passwordErrorMessage;
+                    confirmPasswordMessage.innerHTML = confirmPasswordErrorMessage;
+            
+                    if (passwordErrorMessage !== '' || confirmPasswordErrorMessage !== '') {
+                        passwordMessage.style.color = 'red';
+                        confirmPasswordMessage.style.color = 'red';
+                    } else {
+                        passwordMessage.style.color = '';
+                        confirmPasswordMessage.style.color = ''; 
+                    }
+                }
+            
+                usernameInput.addEventListener('input', validateUsername);
+                emailInput.addEventListener('input', validateEmail);
+                passwordInput.addEventListener('input', validatePassword);
+                confirmPasswordInput.addEventListener('input', validatePassword);
+            });
+        </script>
+    </head>
+    <body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <span class="btn-close px-2" style="cursor: pointer" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+    {% endfor %}
+    <div class="signup-form">
+        <form method="post" action="/signup">
+            {% csrf_token %}
+            <h2>SignUp</h2>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col"><input type="text" class="form-control" id="fname" name="first_name" placeholder="First Name" required="required"></div>
+                    <div class="col"><input type="text" class="form-control" id="lname" name="last_name" placeholder="Last Name" required="required"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="required">
+                <span id="username-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
+                <span id="email-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+                <span id="password-message"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required="required">
+                <span id="confirm-password-message"></span>
+            </div>
+            <div class="g-recaptcha" data-sitekey="RECAPTCHA SITE KEY"></div>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+            </div>
+        </form>
+        <div class="text-center">Already have an account? <a href="/signin">Sign in</a></div>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </body>
+</html>

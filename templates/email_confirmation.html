@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e4e4e4;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Our Website!</h2>
+        <p>Hello {{ name }},</p>
+        <p>Thank you for signing up. Please click on the link below to confirm your email address and activate your account:</p>
+        <p><a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm Email Address</a></p>
+        <p>If you did not sign up for an account on our website, you can safely ignore this email.</p>
+        <p>Thank you.</p>
+    </div>
+</body>
+</html>
+

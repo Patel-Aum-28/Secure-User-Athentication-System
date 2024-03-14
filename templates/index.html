@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        body {
+            height: 100vh;
+            background-image: linear-gradient( 89.9deg,  rgba(178,253,238,0.96) -8.1%, rgba(207,244,254,1) 26.3%, rgba(207,244,254,0.48) 47.5%, rgba(254,219,243,0.63) 61.5%, rgba(254,219,243,1) 78.7%, rgba(254,207,210,1) 109.2% );
+            font-family: "Roboto", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong> {{ message }}
+            <button type="button" class="btn-close" aria-label="Close" onclick="this.parentElement.style.display='none';"></button>
+        </div>
+        {% endfor %} 
+        {% if user.is_authenticated and user.is_active %}
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span>You are Logged in Successfully!</span>
+                    <button type="button" class="btn-close" aria-label="Close" onclick="this.parentElement.style.display='none';"></button>
+                </div>
+                <section class="jumbotron text-center">
+                    <div class="container">
+                        <h1 class="jumbotron-heading">User Authentication System</h1>
+                        <h3 >Hello {{ first_name }}!</h3>
+                        <p class="lead text-muted">
+                            Welcome to the Advanced User Authentication System, designed to provide state-of-the-art security features for your peace of mind. Our system goes beyond basic authentication, offering robust protection against a wide range of cyber threats, ensuring the utmost security for your valuable data and accounts.
+                        </p>
+                        <p>
+                            <a href="/signout" class="col-12 btn btn-primary my-2">SignOut</a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        {% else %}
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <section class="jumbotron text-center">
+                    <div class="container">
+                        <h1 class="jumbotron-heading">User Authentication System</h1>
+                        <p class="lead text-muted">
+                            This is a secure login system built using Django, renowned for its robust security features. The system is fortified against major vulnerabilities, ensuring a reliable shield against potential threats and unauthorized access attempts.
+                        </p>
+                        <p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="/signin" class="col-5 btn btn-primary my-2">SignIn</a>
+                                <a href="/signup" class="col-5 btn btn-secondary my-2">SignUp</a>
+                            </div>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
