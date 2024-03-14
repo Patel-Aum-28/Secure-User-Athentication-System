@@ -1,11 +1,5 @@
 # Secure User Authentication System
 
-<p align="center">
-  <a href="https://github.com/Patel-Aum-28/Secure-User-Athentication-System/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/Patel-Aum-28/Secure-User-Athentication-System" alt="License">
-  </a>
-</p>
-
 > [!NOTE]
 > Please configure project first. See Configuration section for more details.
 
