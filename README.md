@@ -41,7 +41,7 @@ Secure User Authentication System is a strong and reliable Django application de
 > - Update Email address in `activation_failed.html` page so user can contact you if error accur in email activation.
 
 > [!NOTE]
-> Enter `http://127.0.0.1:8000` in Domains section.
+> Enter `http://127.0.0.1:8000` in domain section.
 
 #### 2. **Installation**: 
 - Clone the repository.
