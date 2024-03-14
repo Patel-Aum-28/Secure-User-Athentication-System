@@ -64,9 +64,7 @@ Secure User Authentication System is a strong and reliable Django application de
     ```
 
 #### 3. **Run the Application**: Start the Django development server to run the application locally.
-    ```bash
     python manage.py runserver
-    ```
 
 #### 4. **Access the Application**: Open a web browser and navigate to `http://localhost:8000` to access the application.
 
